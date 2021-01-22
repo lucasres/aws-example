@@ -1,0 +1,8 @@
+# Descrição
+
+Projeto basico sobre SQS Amazon.
+
+# Objetivos
+
+* Criar um serviço em php que consome uma SQS 
+* Criar um serviço em node que recebe uma requisição HTTP e manda uma mensagem na SQS para o serviço php consumir

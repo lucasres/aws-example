@@ -1,0 +1,4 @@
+service-php/vendor
+service-php/.env
+service-node/node_modules
+service-node/.env
