@@ -19,12 +19,16 @@ $lambdaClient = new \Aws\Lambda\LambdaClient([
 ]); 
 //corpo da mensagem
 $payload = ['a' => 50, 'b' => 100];
-//chamada para aa lambda function
-$result = $lambdaClient->invoke([
-    'FunctionName'      => $_ENV['LAMBDA_FUNCTION'],
-    'InvocationType'    => 'RequestResponse', //faz uma chamada sincrona,
-    'Payload'           => json_encode($payload),
-]);
-//mostra o resultado
-$response = $result->get('Payload');
-print($response);
+try {
+    //chamada para aa lambda function
+    $result = $lambdaClient->invoke([
+        'FunctionName'      => $_ENV['LAMBDA_FUNCTION'],
+        'InvocationType'    => 'RequestResponse', //faz uma chamada sincrona,
+        'Payload'           => json_encode($payload),
+    ]);
+    //mostra o resultado
+    $response = $result->get('Payload');
+    print($response);
+} catch (\Aws\Exception\AwsException $th) {
+    print($th);
+}
